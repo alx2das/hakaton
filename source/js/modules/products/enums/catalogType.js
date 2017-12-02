@@ -1,4 +1,0 @@
-export default {
-	INVENTORY: 'INVENTORY',
-	MODIFIER_GROUP: 'MODIFIER_GROUP'
-}

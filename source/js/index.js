@@ -1,18 +1,10 @@
-import 'babel-polyfill'
-import ReactDOM from 'react-dom'
 import React from 'react'
-import RootContainer from 'components/RootContainer'
-import modules from 'modules/indexModules'
-import configureRedux from 'redux/configureRedux.js'
-import {Map} from 'immutable';
+import ReactDOM from 'react-dom'
 
-const {store, routes, history} = configureRedux(modules, Map());
+import RootComponent from './components/RootComponent'
+
 
 ReactDOM.render(
-	<RootContainer
-		store={store}
-		routes={routes}
-		history={history}
-	/>,
-	document.getElementById('root')
+    <RootComponent/>,
+    document.getElementById('root')
 );
