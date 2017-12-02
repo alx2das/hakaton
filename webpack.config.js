@@ -14,7 +14,7 @@ const buildEntryPoint = (point) => {
 module.exports = function (env) {
 	let output = {
 		path: config.buildPath,
-		publicPath: '/',
+		publicPath: config.IS_PRODUCTION ? './' : '/',
 		filename: '[name]-[hash].js'
 	};
 	if (config.IS_PRODUCTION)
