@@ -95,9 +95,9 @@ function* initApp() {
 export default function* () {
 	try {
 		yield all([
-			fork(initApp),
-			fork(watchLogin),
-			fork(watchLogout)
+			// fork(initApp),
+			// fork(watchLogin),
+			// fork(watchLogout)
 		])
 	}
 	catch (ex) {

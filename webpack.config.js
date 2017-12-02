@@ -26,7 +26,7 @@ module.exports = function (env) {
 		entry: {
 			vendor: vendor,
 			app: buildEntryPoint('./index'),
-			signin: buildEntryPoint('./signin'),
+			// signin: buildEntryPoint('./signin'),
 		},
 		output: output,
 		module: {

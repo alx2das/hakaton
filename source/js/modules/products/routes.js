@@ -6,12 +6,18 @@ import ProductModifierContainer from './containers/ProductModifierContainer';
 import ProductExportContainer from './containers/ProductExportContainer';
 import ProductImportContainer from './containers/ProductImportContainer';
 
+class HelloApp extends React.Component {
+	render() {
+		return <h1>Hello App</h1>
+	}
+}
+
 export function getRoutes() {
 	return {
 		products: {
 			path: '/',
 			exact: true,
-			component: ProductListContainer,
+			component: HelloApp,
 			nested: {
 				product: {
 					path: '/product/:action/point/:point/code/:inventCode',

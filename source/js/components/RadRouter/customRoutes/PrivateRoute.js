@@ -6,17 +6,16 @@ import {LoaderPanel} from 'common/uiElements'
 
 export default (RouteComponent) => {
 
-	@connect(mapStateToProps)
+	// @connect(mapStateToProps)
 	class PrivateRoute extends React.Component {
 		render() {
-			const {authData, ...props}=this.props;
+			const {...props}=this.props;
 
-			if (authData != null)
-				return (<RouteComponent {...props}/>);
-			else {
-				setTimeout(() => window.location.href = '/signin', 500);
-				return (<LoaderPanel loading={true}/>)
-			}
+			return (
+				<RouteComponent
+					{...props}
+				/>
+			);
 		}
 	}
 
