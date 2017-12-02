@@ -17,7 +17,7 @@ const rules = [
 
 if (config.IS_PRODUCTION) {
 	rules.push({
-		test: /\.styl$/,
+        test: /\.(styl|css)$/,
 		loader: ExtractTextPlugin.extract({
 			fallback: 'style-loader',
 			use: 'css-loader!stylus-loader?resolve url',
@@ -25,7 +25,7 @@ if (config.IS_PRODUCTION) {
 	});
 } else {
 	rules.push({
-		test: /\.styl$/,
+		test: /\.(styl|css)$/,
 		loader: 'style-loader!css-loader!stylus-loader?resolve url',
 	});
 }

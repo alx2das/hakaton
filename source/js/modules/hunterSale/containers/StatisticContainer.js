@@ -34,8 +34,41 @@ export default class extends Component {
 
         return (
             <div>
-                <h1>StatisticContainer</h1>
-                <Link to={'/options'}>Go Options</Link>
+                <div className="tabs_flat tabs_flat__h1">
+                    <a className="tab tab__active">Все точки</a>
+                    <a className="tab">Дмитровская точка</a>
+                    <a className="tab">Кофейная на ленина</a>
+                    <a className="tab">Кофейня на Балтийской</a>
+                    <a className="tab">бульвар славы</a>
+                </div>
+
+                <div className="box_stats">
+                    <div className='bs_float'>
+                        <div className='bs_title'>Продажи (Текущие/План)</div>
+                        <div className='bs_info'>
+                            12 000 руб. <span>/ 45 000 руб.</span>
+                        </div>
+                    </div>
+                    <div className='bs_float'>
+                        <div className='bs_title'>Товаров в чеке (текущих / план)</div>
+                        <div className='bs_info'>
+                            450 руб. <span>/ 600 руб.</span>
+                        </div>
+                    </div>
+                    <div className='bs_float'>
+                        <div className='bs_title'>Средний чек (текущий / план)</div>
+                        <div className='bs_info'>
+                            4 <span>/ 7</span>
+                        </div>
+                    </div>
+                    <div className='bs_float'>
+                        <div className='bs_title'>Продажи товаров недели</div>
+                        <div className='bs_info'>
+                            127
+                        </div>
+                    </div>
+                </div>
+
             </div>
         )
 

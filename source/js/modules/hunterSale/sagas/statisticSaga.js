@@ -6,10 +6,9 @@ import * as actEnums from '../actions/statisticActions'
 
 function* checkConnectSaga(req) {
     try {
-        console.log('checkConnectSaga', req);
-
-        const responce = yield call(dataContext.checkConnect);
-        console.log('responce', responce);
+        // console.log('checkConnectSaga', req);
+        // const responce = yield call(dataContext.checkConnect);
+        // console.log('responce', responce);
 
         yield put(actEnums.checkConnect.success());
     } catch (err) {

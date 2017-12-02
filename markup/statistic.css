@@ -1,0 +1,60 @@
+.tabs_flat {
+    font-family: 'Ubuntu', sans-serif;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.tabs_flat:after, .box_stats:after {
+    content: " ";
+    clear: both;
+    display: block;
+}
+
+.tabs_flat .tab {
+    cursor: pointer;
+    float: left;
+    margin-right: 24px;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 12px 0;
+    font-style: normal;
+    color: #727272;
+}
+.tabs_flat .tab:hover {
+    color: #FF7800;
+}
+
+.tabs_flat .tab.tab__active {
+    color: #FF7800;
+    padding: 12px 0 13px 0;
+    margin-bottom: -1px;
+    border-bottom: 4px solid #FF7800;
+}
+
+.box_stats {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 40px 0 30px;
+    color: #000000;
+}
+
+.box_stats .bs_title {
+    font-size: 14px;
+    font-style: normal;
+    line-height: 29px;
+}
+
+.box_stats .bs_float {
+    float: left;
+    margin-right: 24px;
+}
+
+.box_stats .bs_info {
+    font-size: 24px;
+    font-style: normal;
+    line-height: 29px;
+}
+
+.box_stats .bs_info > span {
+    color: #727272;
+    font-size: 16px;
+}
