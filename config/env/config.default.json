@@ -1,7 +1,19 @@
 {
   "CONFIG_NAME": "default",
-  "HOST": "evotor.hakaton.ru",
+  "HOST": "react.modulbank.ru",
   "API_URL": "/api",
   "PORT": 3000,
-  "GITHUB_PAGES": ""
+  "DADATA": {
+    "baseUrl": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/",
+    "token": "Token e962ed57bc84d0ca20ebf875d79ced4c008b2483"
+  },
+  "YandexOFD": {
+    "inn": "7704358518",
+    "name": "\"Яндекс.ОФД\" ООО",
+    "host": "test.kkt.ofd.yandex.net",
+    "port": 12345,
+    "senderEmail": "no-reply@ofd.yandex.ru"
+  },
+  "RECAPTCHA_KEY": "6LeJNhcUAAAAAEqqVK2197rndTkLHRDyh429W7rw",
+  "SHOW_CAPTCHA": false
 }

@@ -8,17 +8,13 @@ const devServer = require('./webpack/devServer');
 const buildEntryPoint = (point) => {
 	if (config.IS_PRODUCTION)
 		return point;
-	return [
-		point,
-		'webpack/hot/only-dev-server',
-		`webpack-dev-server/client?http://${config.app.HOST}:${config.app.PORT}`
-	];
+	return [point, 'webpack/hot/only-dev-server', `webpack-dev-server/client?http://${config.app.HOST}:${config.app.PORT}`];
 };
 
 module.exports = function (env) {
 	let output = {
 		path: config.buildPath,
-		publicPath: config.IS_PRODUCTION ? './' : '/',
+		publicPath: '/',
 		filename: '[name]-[hash].js'
 	};
 	if (config.IS_PRODUCTION)
