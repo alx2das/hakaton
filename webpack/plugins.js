@@ -55,14 +55,6 @@ module.exports = function (env) {
 			filename: 'index.html',
 			chunks: ["app", "common", "vendor", "manifest"]
 		}),
-		// new HtmlWebpackPlugin({
-		// 	version: JSON.stringify(env && env.BUILD_VERSION ? env.BUILD_VERSION : '0.0.0'),
-		// 	date: (new Date).toLocaleString(),
-		// 	template: path.join(config.sourcePath, 'signin.html'),
-		// 	path: config.buildPath,
-		// 	filename: 'signin.html',
-		// 	chunks: ["signin", "common", "vendor", "manifest"]
-		// }),
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				postcss: [
