@@ -81,7 +81,7 @@ module.exports = function (env) {
 				context: config.sourcePath,
 			}
 		}),
-		new OpenBrowserPlugin({url: `http://${config.app.HOST}/`})
+		new OpenBrowserPlugin({url: `http://${config.app.HOST}:${config.app.PORT}/`})
 	];
 
 	if (config.IS_PRODUCTION) {
