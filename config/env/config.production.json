@@ -1,0 +1,11 @@
+{
+  "CONFIG_NAME": "PRODUCTION",
+  "YandexOFD": {
+    "inn": "7704358518",
+    "name": "\"Яндекс.ОФД\" ООО",
+    "host": "kkt.ofd.yandex.net",
+    "port": 12345,
+    "senderEmail": "no-reply@ofd.yandex.ru"
+  },
+  "SHOW_CAPTCHA": true
+}

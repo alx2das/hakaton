@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": false,
+    "es6":true,
+    "node": true
+  },
+  "extends":["eslint:recommended"],
+  "globals": {
+    "_": true
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-mixed-spaces-and-tabs": "warn",
+    "no-cond-assign": "off",
+    "no-console": "off",
+    "comma-dangle": ["error", {
+      "arrays": "only-multiline",
+      "objects": "only-multiline",
+      "imports": "only-multiline",
+      "exports": "only-multiline",
+      "functions": "ignore"
+    }]
+  }
+}
