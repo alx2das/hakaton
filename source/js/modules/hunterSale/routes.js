@@ -7,12 +7,12 @@ import HomeTwoContainer from './containers/HomeTwoContainer'
 export default () => {
 	return {
         hunterSale: {
-            path: '/',
+            path: '/hakaton/build/',
             exact: true,
             component: HomeOneContainer
         },
         hunterSale2: {
-            path: '/two',
+            path: '/hakaton/build/two',
             exact: true,
             component: HomeTwoContainer
         }

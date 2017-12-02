@@ -13,18 +13,16 @@ export default class AppContainer extends React.Component {
     render() {
         const {routes} = this.props;
         return (
-            <Route path={'/hakaton/build/'}>
-                <Switch>
-                    {routes.map((p, index) => (
-                        <Route
-                            key={index}
-                            exact={p.exact}
-                            path={p.path}
-                            component={p.component}
-                        />
-                    ))}
-                </Switch>
-            </Route>
+            <Switch>
+                {routes.map((p, index) => (
+                    <Route
+                        key={index}
+                        exact={p.exact}
+                        path={p.path}
+                        component={p.component}
+                    />
+                ))}
+            </Switch>
         );
     }
 }
