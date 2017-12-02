@@ -104,7 +104,7 @@ module.exports = function (env) {
 			new ExtractTextPlugin('[name]-[hash].css'),
 			new CopyWebpackPlugin([
 				{from: '../static/**/*', to: 'static'},
-				{from: '../favicon.ico'}
+				// {from: '../favicon.ico'}
 			])
 		);
 	} else {
