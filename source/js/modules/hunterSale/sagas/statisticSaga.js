@@ -9,7 +9,6 @@ function* checkConnectSaga(req) {
         console.log('checkConnectSaga', req);
 
         const responce = yield call(dataContext.checkConnect);
-
         console.log('responce', responce);
 
         yield put(actEnums.checkConnect.success());

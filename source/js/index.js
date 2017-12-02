@@ -7,11 +7,7 @@ import configureRedux from 'redux/configureRedux.js'
 import {Map} from 'immutable'
 
 
-const {
-    store,
-    routes,
-    history
-} = configureRedux(modules, Map());
+const {store, routes, history} = configureRedux(modules, Map());
 
 ReactDOM.render(
     <RootContainer

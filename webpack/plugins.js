@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const config = require('../webpack/constants');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
@@ -18,7 +17,6 @@ module.exports = function (env) {
 
 		new WebpackChunkHash(),
 		new CommonsChunkPlugin({
-			// The order of this array matters
 			names: ["common", "vendor"],
 			minChunks: 2
 		}),
@@ -77,7 +75,6 @@ module.exports = function (env) {
 	];
 
 	if (config.IS_PRODUCTION) {
-		// Production plugins
 		plugins.push(
 			new webpack.LoaderOptionsPlugin({
 				minimize: true,
@@ -101,11 +98,7 @@ module.exports = function (env) {
 				},
 				sourceMap: true
 			}),
-			new ExtractTextPlugin('[name]-[hash].css'),
-			new CopyWebpackPlugin([
-				{from: '../static/**/*', to: 'static'},
-				// {from: '../favicon.ico'}
-			])
+			new ExtractTextPlugin('[name]-[hash].css')
 		);
 	} else {
 		// Development plugins
