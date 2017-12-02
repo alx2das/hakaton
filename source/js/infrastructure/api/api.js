@@ -17,11 +17,11 @@ function initApi() {
 	const _http = new Http(_interceptors);
 	const api = createApi(_http);
 	base(api);
-	user(api);
-	retail(api);
-	catalog(api);
-	cashdocs(api);
-	docs(api);
+	// user(api);
+	// retail(api);
+	// catalog(api);
+	// cashdocs(api);
+	// docs(api);
 	return api;
 }
 

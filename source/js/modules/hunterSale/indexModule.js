@@ -1,12 +1,15 @@
-// import * as listReducer from './reducers/contragentListReducer'
-// import * as editReducer from './reducers/contragentEditReducer'
 import * as routes  from './routes.js'
-// import contragentSaga from './sagas/contragentSaga'
+
+// Reducers
+import statisticReduce from './reducers/statisticReducer'
+
+// Sagas
+import statisticSaga from './sagas/statisticSaga'
+
 
 export function getReducers(createReducer) {
 	return {
-		// listContragent: createReducer(listReducer.initialState, listReducer.actionHandlers),
-		// editContragent: createReducer(editReducer.initialState, editReducer.actionHandlers)
+		statistic: statisticReduce(createReducer)
 	}
 }
 
@@ -16,6 +19,6 @@ export function getRoutes() {
 
 export function getSagas() {
 	return [
-		// contragentSaga()
+        statisticSaga()
 	]
 }
