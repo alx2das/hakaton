@@ -86,3 +86,21 @@ body, html {
 .table_row {
     border-bottom: 1px solid rgba(0, 0, 0, 0.0948);
 }
+
+.button.light {
+    font-family: Ubuntu, sans-serif;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #000000;
+}
+
+.button.light.orange {
+    border: 2px solid #FF6633;
+    box-sizing: border-box;
+    border-radius: 100px;
+    color: #FF6633;
+    font-weight: 500;
+    padding: 0 50px;
+}

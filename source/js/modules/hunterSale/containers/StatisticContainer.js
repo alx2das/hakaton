@@ -34,6 +34,13 @@ export default class extends Component {
 
         return (
             <div>
+                <div className="title_panel">
+                    <a className="button small icon-date light show_filter_panel">Прошлая неделя</a>
+                    <a className="button small icon-date light show_filter_panel">Текущая неделя</a>
+
+                    <a className="button small light orange f_right">Настроить</a>
+                </div>
+
                 <div className="tabs_flat tabs_flat__h1">
                     <a className="tab tab__active">Все точки</a>
                     <a className="tab">Дмитровская точка</a>
