@@ -16,17 +16,20 @@ function* checkConnectSaga(req) {
     }
 }
 
-function* getRetalPointSaga() {
+function* getRetalPointSaga({type, ...req}) {
     try {
-        // api/GetStories?uid
-    } catch (err) {
+        const responce = yield call(dataContext.getStories, req);
+        console.log('responce', responce);
 
+    } catch (err) {
+        console.error(err);
     }
 }
 
 
 export default function* () {
     yield all([
-        takeEvery(actEnums.CHECK_CONNECT.REQUEST, checkConnectSaga)
+        takeEvery(actEnums.CHECK_CONNECT.REQUEST, checkConnectSaga),
+        takeEvery(actEnums.GET_RETAIL_POINTS.REQUEST, getRetalPointSaga)
     ])
 }

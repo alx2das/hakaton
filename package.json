@@ -84,7 +84,7 @@
     "path-to-regexp": "^1.7.0",
     "prop-types": "^15.5.9",
     "q": "^1.4.1",
-    "query-string": "^5.0.0",
+    "query-string": "^5.0.1",
     "raven-for-redux": "^1.0.0",
     "raven-js": "^3.17.0",
     "react": "^15.6.1",

@@ -6,15 +6,21 @@ import {Link} from 'react-router-dom'
 import {AmountFormat} from 'common/uiElements'
 import {Line} from 'react-chartjs-2'
 import {withRouter} from 'react-router'
+import queryString from 'query-string';
 
 import * as actions from '../actions/statisticActions'
 import * as selector from '../selectors/statisticSelector'
+import {getCurrentLocation} from '../../core/selectors'
 
 
 function mapStateToProps(state, ownProps) {
     const statisticState = selector.getStatisticSelector(state);
+    const locationMap = getCurrentLocation(state);
 
-    return {statisticState}
+    const location = locationMap.toJS();
+    const searchParams = queryString.parse(location.search);
+
+    return {statisticState, searchParams}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -28,7 +34,8 @@ function mapDispatchToProps(dispatch) {
 @toJS
 export default class extends Component {
     componentDidMount() {
-        // this.props.actGetRetailPoints({hello: 'World'});
+        const {searchParams, actGetRetailPoints} = this.props;
+        actGetRetailPoints(searchParams);
     }
 
     render() {
