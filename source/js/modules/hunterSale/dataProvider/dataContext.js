@@ -16,7 +16,17 @@ export const getStatistics = (uid) => {
         .get({uid}).then(res => res.data);
 };
 
+export const getStatisticsBlack = (uid) => {
+    return api.api().statistics_black()
+        .get({uid}).then(res => res.data);
+};
+
 export const getOptions = (actRPointID) => {
     return api.api().challenges()
         .get({storeUuid: actRPointID}).then(res => res.data && res.data[0] || null);
-}
+};
+
+export const saveOptions = (props) => {
+    return api.api().challenge()
+        .post(props);
+};

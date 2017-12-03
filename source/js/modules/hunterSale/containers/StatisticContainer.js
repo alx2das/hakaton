@@ -33,12 +33,26 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 @toJS
 export default class extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            blackKarma: false
+        };
+    }
+
+    onBlackKarma() {
+        this.setState({blackKarma: true})
+    }
+
     componentDidMount() {
         const {searchParams, actGetRetailPoints} = this.props;
         actGetRetailPoints(searchParams);
     }
 
     onUpdPoint(pointID) {
+        this.setState({blackKarma: false});
         this.props.actGetStatistics(pointID);
     }
 
@@ -48,6 +62,11 @@ export default class extends Component {
         const rPoint = statisticState.rPoint.length && statisticState.rPoint || null;
         const challange = statisticState.statistics && statisticState.statistics.challange || [];
         const statisticItems = statisticState.statistics && statisticState.statistics.statisticItems || [];
+        const statisticBlack = statisticState.black || [];
+
+        console.log('statisticBlack', statisticBlack);
+
+        const {blackKarma} = this.state;
 
         // const data = {
         //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -102,71 +121,100 @@ export default class extends Component {
         return (
             <LoaderPanel loading={statisticState.pointsLoading}>
                 <div className="title_panel">
-                    <button className="button small icon-date light show_filter_panel" disabled={true}>Прошлая неделя</button>
+                    <button className="button small icon-date light show_filter_panel" disabled={true}>Прошлая неделя
+                    </button>
                     <button className="button small icon-date light show_filter_panel">Текущая неделя</button>
                     <Link to={'/options'} className="button small light orange f_right">Настроить</Link>
                 </div>
                 {rPoint &&
                 <div className="tabs_flat tabs_flat__h1">
                     {rPoint.map(item => (
-                        <a className={`tab ${actRPointID === item.uuid ? 'tab__active' : ''}`}
+                        <a className={`tab ${!blackKarma && actRPointID === item.uuid ? 'tab__active' : ''}`}
                            onClick={() => this.onUpdPoint(item.accountId)}
                            key={item.uuid}>{item.name}</a>
                     ))}
+
+                    <a className={`tab f_right ${blackKarma ? 'tab__active' : ''}`}
+                       onClick={() => this.onBlackKarma()}>Черная карма</a>
                 </div>}
                 <LoaderPanel loading={!statisticState.pointsLoading && statisticState.pointLoading}>
 
-                    {!!(challange.length) && challange
-                        .filter(i => i.storeUuid === actRPointID)
-                        .map((i, k) => (
-                            <div key={k} className="box_stats">
-                                <div className='bs_float'>
-                                    <div className='bs_title'>Продажи (Текущие / План)</div>
-                                    <div className='bs_info'>
-                                        <AmountFormat value={i.maxAmount}/> <span className='sm'>/ <AmountFormat value={i.weekPlan}/></span>
-                                    </div>
-                                </div>
-                                <div className='bs_float'>
-                                    <div className='bs_title'>Средний чек (текущий / план)</div>
-                                    <div className='bs_info'>
-                                        <AmountFormat value={i.maxCheck / i.ctn}/> <span className='sm'>/ <AmountFormat value={i.avrCheckSum}/></span>
-                                    </div>
-                                </div>
-                                <div className='bs_float'>
-                                    <div className='bs_title'>Товаров в чеке (текущих / план)</div>
-                                    <div className='bs_info'>
-                                        {i.maxCount / i.ctn} <span className='sm'>/ {i.avrCheckPosition}</span>
-                                    </div>
-                                </div>
+                    {blackKarma &&
+                    <div>
+
+                        <div className="table table_contragents">
+                            <div className="table_head">
+                                <div className="contragent_name">Имя</div>
+                                <div className="contragent_name">Карма</div>
                             </div>
-                        ))
-                    }
-
-                    {/*<div className='box_chart'>
-                        <Line data={data}/>
-                    </div>*/}
-
-                    {!!(statisticItems.length) &&
-                    <div className="table table_contragents">
-                        <div className="table_head">
-                            <div className="contragent_name">Кассир</div>
-                            <div className="contragent_name">Выручка</div>
-                            <div className="contragent_role">Средний чек</div>
-                            <div className="contragent_status">Кол-во продаж</div>
-                            <div className="contragent_status">Карма</div>
+                            {statisticBlack
+                                .map((i, k) => (
+                                    <div key={k} className="table_row row_link">
+                                        <div className="contragent_name">{i.name}</div>
+                                        <div className="contragent_name"><b>&#8212; {i.karma}</b></div>
+                                    </div>
+                                ))
+                            }
                         </div>
-                        {statisticItems
+
+                    </div>}
+
+                    {!blackKarma &&
+                    <div>
+                        {!!(challange.length) && challange
                             .filter(i => i.storeUuid === actRPointID)
                             .map((i, k) => (
-                                <div key={k} className="table_row row_link">
-                                    <div className="contragent_name">{i.cashierName}</div>
-                                    <div className="contragent_name"><AmountFormat value={i.totalAmount}/></div>
-                                    <div className="contragent_role"><AmountFormat value={i.avrCheck}/></div>
-                                    <div className="contragent_status">{i.saleCount}</div>
-                                    <div className="contragent_status">{i.karma}</div>
+                                <div key={k} className="box_stats">
+                                    <div className='bs_float'>
+                                        <div className='bs_title'>Продажи (Текущие / План)</div>
+                                        <div className='bs_info'>
+                                            <AmountFormat value={i.maxAmount}/> <span className='sm'>/ <AmountFormat
+                                            value={i.weekPlan}/></span>
+                                        </div>
+                                    </div>
+                                    <div className='bs_float'>
+                                        <div className='bs_title'>Средний чек (текущий / план)</div>
+                                        <div className='bs_info'>
+                                            <AmountFormat value={i.maxCheck / i.ctn}/> <span
+                                            className='sm'>/ <AmountFormat value={i.avrCheckSum}/></span>
+                                        </div>
+                                    </div>
+                                    <div className='bs_float'>
+                                        <div className='bs_title'>Товаров в чеке (текущих / план)</div>
+                                        <div className='bs_info'>
+                                            {i.maxCount / i.ctn} <span className='sm'>/ {i.avrCheckPosition}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             ))
                         }
+
+                        {/*<div className='box_chart'>
+                        <Line data={data}/>
+                    </div>*/}
+
+                        {!!(statisticItems.length) &&
+                        <div className="table table_contragents">
+                            <div className="table_head">
+                                <div className="contragent_name">Кассир</div>
+                                <div className="contragent_name">Выручка</div>
+                                <div className="contragent_role">Средний чек</div>
+                                <div className="contragent_status">Кол-во продаж</div>
+                                <div className="contragent_status">Карма</div>
+                            </div>
+                            {statisticItems
+                                .filter(i => i.storeUuid === actRPointID)
+                                .map((i, k) => (
+                                    <div key={k} className="table_row row_link">
+                                        <div className="contragent_name">{i.cashierName}</div>
+                                        <div className="contragent_name"><AmountFormat value={i.totalAmount}/></div>
+                                        <div className="contragent_role"><AmountFormat value={i.avrCheck}/></div>
+                                        <div className="contragent_status">{i.saleCount}</div>
+                                        <div className="contragent_status">{i.karma}</div>
+                                    </div>
+                                ))
+                            }
+                        </div>}
                     </div>}
                 </LoaderPanel>
             </LoaderPanel>

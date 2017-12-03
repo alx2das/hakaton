@@ -30,6 +30,24 @@ const actionHandlers = {
         })
     },
 
+    // сохранение
+    [enums.SAVE_OPTIONS.REQUEST]: (state, props) => {
+        return state.merge({
+            saving: true
+        });
+    },
+    [enums.SAVE_OPTIONS.SUCCESS]: (state, props) => {
+        return state.merge({
+            saving: false,
+            options: fromJS(props)
+        });
+    },
+    [enums.SAVE_OPTIONS.FAILURE]: (state, props) => {
+        return state.merge({
+            saving: false,
+            error: true
+        });
+    }
 };
 
 

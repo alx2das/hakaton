@@ -23,7 +23,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        actGetOptions: actions.getOptions.request
+        actGetOptions: actions.getOptions.request,
+        actSaveOptions: actions.saveOptions.request
     }, dispatch);
 }
 
@@ -37,7 +38,7 @@ export default class extends Component {
     }
 
     onSubmitForm(props) {
-        console.log('onSubmitForm', props && props.toJS && props.toJS());
+        this.props.actSaveOptions(props && props.toJS && props.toJS());
     }
 
     render() {

@@ -43,6 +43,7 @@ const actionHandlers = {
     [enums.GET_STATISTICS.SUCCESS]: (state, res) => {
         return state.merge({
             pointLoading: false,
+            black: fromJS(res.resBlack || []),
             statistics: fromJS({
                 challange: res.challange,
                 statisticItems: res.statisticItems

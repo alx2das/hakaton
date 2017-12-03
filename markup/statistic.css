@@ -118,6 +118,14 @@ body, html {
     font-weight: 500;
     padding: 0 50px;
     min-width: 200px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.button.light.orange.loading {
+    background-color: #f1f1f1;
 }
 
 .app-settings .app-settings__main .form-line {

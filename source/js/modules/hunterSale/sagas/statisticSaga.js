@@ -17,6 +17,7 @@ function* getRetalPointSaga({type, ...req}) {
 function* getStatisticsSaga({uid}) {
     try {
         const res = yield call(dataContext.getStatistics, uid);
+        const resBlack = yield call(dataContext.getStatisticsBlack, uid);
 
         const storeUuid = res.challange[0].storeUuid;
         const challange = res.statisticItems
@@ -31,9 +32,9 @@ function* getStatisticsSaga({uid}) {
 
         yield put(actEnums.getStatistics.success({
             uid,
+            resBlack,
             ...res
         }));
-
     } catch (err) {
         console.log(err);
     }

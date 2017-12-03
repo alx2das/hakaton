@@ -18,9 +18,24 @@ function* getOptionsSaga(req) {
     }
 }
 
+function* saveOptionsSaga({type, ...props}) {
+    try {
+
+        // const statisticSatate = yield select(getStatisticSelector);
+        // const actRPointID = statisticSatate.get('actRPointID');
+        const response = yield call(dataContext.saveOptions, props);
+
+        console.log('response', response);
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 
 export default function* () {
     yield all([
-        takeEvery(actEnums.GET_OPTIONS.REQUEST, getOptionsSaga)
+        takeEvery(actEnums.GET_OPTIONS.REQUEST, getOptionsSaga),
+        takeEvery(actEnums.SAVE_OPTIONS.REQUEST, saveOptionsSaga)
     ])
 }
