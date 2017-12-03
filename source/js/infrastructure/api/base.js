@@ -1,8 +1,8 @@
 export default (api) => {
 
-    api.addResource('index');
-
-    api.addResource('api').addResource('v2').addResource('receipts');
+    api.addResource('api', 'apii');
 
     api.api().addResource('stories', 'GetStories');
+    api.api().addResource('statistics', 'GetStatistics');
+
 };

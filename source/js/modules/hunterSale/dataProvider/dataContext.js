@@ -8,5 +8,10 @@ export const checkConnect = () => {
 
 export const getStories = (params) => {
     return api.api().stories()
-        .get(params);
+        .get(params).then(res => res.data);
+};
+
+export const getStatistics = (uid) => {
+    return api.api().statistics()
+        .get({uid}).then(res => res.data);
 };

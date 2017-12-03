@@ -73,7 +73,7 @@ body, html {
     line-height: 29px;
 }
 
-.box_stats .bs_info > span {
+.box_stats .bs_info span.sm {
     color: #727272;
     font-size: 16px;
 }

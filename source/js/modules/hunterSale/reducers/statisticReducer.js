@@ -1,44 +1,57 @@
-import {Map, fromJS} from 'immutable'
+import {Map, List, fromJS} from 'immutable'
 import * as enums from '../actions/statisticActions'
 
 
 const initialState = Map({
-    loading: true,
-    error: null
+    pointsLoading: true,
+    pointLoading: false,
+
+
+    actRPointID: null,
+    rPoint: List([]),
+    statistics: Map({})
 });
 
 const actionHandlers = {
-    [enums.CHECK_CONNECT.REQUEST]: (state, req) => {
+    // получить список торг.точек
+    [enums.GET_RETAIL_POINTS.REQUEST]: (state, req) => {
         return state.merge({
-            loading: true
+            pointsLoading: true
         })
     },
-    [enums.CHECK_CONNECT.SUCCESS]: (state, res) => {
+    [enums.GET_RETAIL_POINTS.SUCCESS]: (state, {res}) => {
         return state.merge({
-            loading: false
+            pointsLoading: false,
+
+            actRPointID: res && res.length > 1 ? null : res[0].uuid,
+            rPoint: fromJS(res)
         })
     },
-    [enums.CHECK_CONNECT.FAILURE]: (state, ) => {
+    [enums.GET_RETAIL_POINTS.FAILURE]: (state) => {
+        console.log(enums.GET_RETAIL_POINTS.FAILURE);
         return state.merge({
-            loading: false,
+            pointsLoading: false,
             error: true
         })
     },
 
-    // получить список торг.точек
-    [enums.GET_RETAIL_POINTS.REQUEST]: (state, req) => {
+    [enums.GET_STATISTICS.REQUEST]: (state, req) => {
         return state.merge({
-            loading: true
+            pointLoading: true
         })
     },
-    [enums.GET_RETAIL_POINTS.SUCCESS]: (state, res) => {
+    [enums.GET_STATISTICS.SUCCESS]: (state, res) => {
         return state.merge({
-            loading: false
+            pointLoading: false,
+            statistics: fromJS({
+                challange: res.challange,
+                statisticItems: res.statisticItems
+            })
         })
     },
-    [enums.GET_RETAIL_POINTS.FAILURE]: (state) => {
+    [enums.GET_STATISTICS.FAILURE]: (state) => {
         return state.merge({
-            loading: false,
+            pointLoading: false,
             error: true
         })
     }

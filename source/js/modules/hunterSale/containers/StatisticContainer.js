@@ -3,17 +3,17 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
-import {AmountFormat} from 'common/uiElements'
+import {AmountFormat, LoaderPanel} from 'common/uiElements'
 import {Line} from 'react-chartjs-2'
 import {withRouter} from 'react-router'
-import queryString from 'query-string';
+import queryString from 'query-string'
 
 import * as actions from '../actions/statisticActions'
 import * as selector from '../selectors/statisticSelector'
 import {getCurrentLocation} from '../../core/selectors'
 
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     const statisticState = selector.getStatisticSelector(state);
     const locationMap = getCurrentLocation(state);
 
@@ -25,7 +25,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        actGetRetailPoints: actions.getRetailPoints.request
+        actGetRetailPoints: actions.getRetailPoints.request,
+        actGetStatistics: actions.getStatistics.request
     }, dispatch);
 }
 
@@ -38,8 +39,17 @@ export default class extends Component {
         actGetRetailPoints(searchParams);
     }
 
+    onUpdPoint(pointID) {
+        this.props.actGetStatistics(pointID);
+    }
+
     render() {
         const {statisticState} = this.props;
+        const actRPointID = statisticState.actRPointID;
+        const rPoint = statisticState.rPoint.length && statisticState.rPoint || null;
+        const challange = statisticState.statistics && statisticState.statistics.challange || [];
+        const statisticItems = statisticState.statistics && statisticState.statistics.statisticItems || [];
+
         const data = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [{
@@ -89,96 +99,79 @@ export default class extends Component {
             }]
         };
 
-        console.log('-->', this.props);
+        // console.log('-->', statisticState);
 
         return (
-            <div>
+            <LoaderPanel loading={statisticState.pointsLoading}>
                 <div className="title_panel">
                     <a className="button small icon-date light show_filter_panel">Прошлая неделя</a>
                     <a className="button small icon-date light show_filter_panel">Текущая неделя</a>
-
                     <Link to={'/options'} className="button small light orange f_right">Настроить</Link>
                 </div>
-
+                {rPoint &&
                 <div className="tabs_flat tabs_flat__h1">
-                    <a className="tab tab__active">Все точки</a>
-                    <a className="tab">Дмитровская точка</a>
-                    <a className="tab">Кофейная на ленина</a>
-                    <a className="tab">Кофейня на Балтийской</a>
-                    <a className="tab">бульвар славы</a>
-                </div>
+                    {rPoint.map(item => (
+                        <a className={`tab ${actRPointID === item.uuid ? 'tab__active' : ''}`}
+                           onClick={() => this.onUpdPoint(item.accountId)}
+                           key={item.uuid}>{item.name}</a>
+                    ))}
+                </div>}
+                <LoaderPanel loading={!statisticState.pointsLoading && statisticState.pointLoading}>
 
-                <div className="box_stats">
-                    <div className='bs_float'>
-                        <div className='bs_title'>Продажи (Текущие/План)</div>
-                        <div className='bs_info'>
-                            <AmountFormat value='12000'/> <span>/ <AmountFormat value='45000'/></span>
+                    {!!(challange.length) && challange
+                        .filter(i => i.storeUuid === actRPointID)
+                        .map((i, k) => (
+                            <div key={k} className="box_stats">
+                                <div className='bs_float'>
+                                    <div className='bs_title'>Продажи (Текущие / План)</div>
+                                    <div className='bs_info'>
+                                        <AmountFormat value={i.maxAmount}/> <span className='sm'>/ <AmountFormat value={i.weekPlan}/></span>
+                                    </div>
+                                </div>
+                                <div className='bs_float'>
+                                    <div className='bs_title'>Средний чек (текущий / план)</div>
+                                    <div className='bs_info'>
+                                        <AmountFormat value={i.maxCheck / i.ctn}/> <span className='sm'>/ <AmountFormat value={i.avrCheckSum}/></span>
+                                    </div>
+                                </div>
+                                <div className='bs_float'>
+                                    <div className='bs_title'>Товаров в чеке (текущих / план)</div>
+                                    <div className='bs_info'>
+                                        {i.maxCount / i.ctn} <span className='sm'>/ {i.avrCheckPosition}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+
+                    {/*<div className='box_chart'>
+                        <Line data={data}/>
+                    </div>*/}
+
+                    {!!(statisticItems.length) &&
+                    <div className="table table_contragents">
+                        <div className="table_head">
+                            <div className="contragent_name">ФИО Касира</div>
+                            <div className="contragent_name">Выручка</div>
+                            <div className="contragent_role">Средний чек</div>
+                            <div className="contragent_status">Кол-во продаж</div>
+                            <div className="contragent_status">Карма</div>
                         </div>
-                    </div>
-                    <div className='bs_float'>
-                        <div className='bs_title'>Средний чек (текущий / план)</div>
-                        <div className='bs_info'>
-                            <AmountFormat value='450'/> <span>/ <AmountFormat value='600'/></span>
-                        </div>
-                    </div>
-                    <div className='bs_float'>
-                        <div className='bs_title'>Товаров в чеке (текущих / план)</div>
-                        <div className='bs_info'>
-                            4 <span>/ 7</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='box_chart'>
-                    <Line data={data}/>
-                </div>
-
-                <div className="table table_contragents">
-                    <div className="table_head">
-                        <div className="contragent_name">ФИО Касира</div>
-                        <div className="contragent_name">Выручка</div>
-                        <div className="contragent_role">Средний чек</div>
-                        <div className="contragent_status">Кол-во продаж</div>
-                        <div className="contragent_status">Карма</div>
-                    </div>
-
-                    <div className="table_row row_link">
-                        <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
-                        <div className="contragent_status">150</div>
-                        <div className="contragent_status">300</div>
-                    </div>
-                    <div className="table_row row_link">
-                        <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
-                        <div className="contragent_status">150</div>
-                        <div className="contragent_status">300</div>
-                    </div>
-                    <div className="table_row row_link">
-                        <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
-                        <div className="contragent_status">150</div>
-                        <div className="contragent_status">300</div>
-                    </div>
-                    <div className="table_row row_link">
-                        <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
-                        <div className="contragent_status">150</div>
-                        <div className="contragent_status">300</div>
-                    </div>
-                    <div className="table_row row_link">
-                        <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
-                        <div className="contragent_status">150</div>
-                        <div className="contragent_status">300</div>
-                    </div>
-                </div>
-            </div>
+                        {statisticItems
+                            .filter(i => i.storeUuid === actRPointID)
+                            .map((i, k) => (
+                                <div key={k} className="table_row row_link">
+                                    <div className="contragent_name">{i.cashierName}</div>
+                                    <div className="contragent_name"><AmountFormat value={i.totalAmount}/></div>
+                                    <div className="contragent_role"><AmountFormat value={i.avrCheck}/></div>
+                                    <div className="contragent_status">{i.saleCount}</div>
+                                    <div className="contragent_status">{i.karma}</div>
+                                </div>
+                            ))
+                        }
+                    </div>}
+                </LoaderPanel>
+            </LoaderPanel>
         )
 
     }
