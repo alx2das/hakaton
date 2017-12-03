@@ -2,6 +2,10 @@ body, html {
     background: none !important;
 }
 
+.app-settings .app-settings__main .form-line {
+    border: none !important;
+}
+
 .tabs_flat {
     padding-top: 10px;
     font-family: 'Ubuntu', sans-serif;
@@ -103,6 +107,7 @@ body, html {
     color: #FF6633;
     font-weight: 500;
     padding: 0 50px;
+    width: 200px;
 }
 
 .app-settings .app-settings__main .form-line {
