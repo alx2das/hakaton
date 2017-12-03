@@ -38,7 +38,7 @@ export default class extends Component {
                     <a className="button small icon-date light show_filter_panel">Прошлая неделя</a>
                     <a className="button small icon-date light show_filter_panel">Текущая неделя</a>
 
-                    <a className="button small light orange f_right">Настроить</a>
+                    <Link to={'/options'} className="button small light orange f_right">Настроить</Link>
                 </div>
 
                 <div className="tabs_flat tabs_flat__h1">
