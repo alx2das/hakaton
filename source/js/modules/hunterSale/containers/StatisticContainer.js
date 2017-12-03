@@ -102,8 +102,8 @@ export default class extends Component {
         return (
             <LoaderPanel loading={statisticState.pointsLoading}>
                 <div className="title_panel">
-                    <a className="button small icon-date light show_filter_panel">Прошлая неделя</a>
-                    <a className="button small icon-date light show_filter_panel">Текущая неделя</a>
+                    <button className="button small icon-date light show_filter_panel" disabled={true}>Прошлая неделя</button>
+                    <button className="button small icon-date light show_filter_panel">Текущая неделя</button>
                     <Link to={'/options'} className="button small light orange f_right">Настроить</Link>
                 </div>
                 {rPoint &&

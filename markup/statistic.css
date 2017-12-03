@@ -130,6 +130,7 @@ body, html {
     font-weight: bold;
     line-height: 24px;
     font-size: 18px;
+    margin-bottom: 0;
 }
 
 .opt_box {
