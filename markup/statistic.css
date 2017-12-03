@@ -2,6 +2,10 @@ body, html {
     background: none !important;
 }
 
+.poss {
+    padding: 15px 0;
+}
+
 .app-settings .app-settings__main .form-line {
     border: none !important;
 }
