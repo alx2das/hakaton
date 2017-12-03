@@ -5,6 +5,7 @@ import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
 import {AmountFormat} from 'common/uiElements'
 import {Line} from 'react-chartjs-2'
+import {withRouter} from 'react-router'
 
 import * as actions from '../actions/statisticActions'
 import * as selector from '../selectors/statisticSelector'
@@ -18,20 +19,20 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        actCheckConnect: actions.checkConnect.request
+        actGetRetailPoints: actions.getRetailPoints.request
     }, dispatch);
 }
 
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 @toJS
 export default class extends Component {
     componentDidMount() {
-        this.props.actCheckConnect({hello: 'World'});
+        // this.props.actGetRetailPoints({hello: 'World'});
     }
 
     render() {
         const {statisticState} = this.props;
-
         const data = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [{
@@ -81,7 +82,7 @@ export default class extends Component {
             }]
         };
 
-        console.log('-->', statisticState);
+        console.log('-->', this.props);
 
         return (
             <div>

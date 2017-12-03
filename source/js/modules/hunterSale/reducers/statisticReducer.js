@@ -23,6 +23,24 @@ const actionHandlers = {
             loading: false,
             error: true
         })
+    },
+
+    // получить список торг.точек
+    [enums.GET_RETAIL_POINTS.REQUEST]: (state, req) => {
+        return state.merge({
+            loading: true
+        })
+    },
+    [enums.GET_RETAIL_POINTS.SUCCESS]: (state, res) => {
+        return state.merge({
+            loading: false
+        })
+    },
+    [enums.GET_RETAIL_POINTS.FAILURE]: (state) => {
+        return state.merge({
+            loading: false,
+            error: true
+        })
     }
 };
 

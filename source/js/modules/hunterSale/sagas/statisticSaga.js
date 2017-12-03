@@ -16,6 +16,14 @@ function* checkConnectSaga(req) {
     }
 }
 
+function* getRetalPointSaga() {
+    try {
+        // api/GetStories?uid
+    } catch (err) {
+
+    }
+}
+
 
 export default function* () {
     yield all([
