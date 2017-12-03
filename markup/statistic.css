@@ -2,9 +2,6 @@ body, html {
     background: none !important;
 }
 
-.poss {
-    padding: 15px 0;
-}
 
 .app-settings .app-settings__main .form-line {
     border: none !important;
@@ -53,6 +50,11 @@ body, html {
     font-family: 'Ubuntu', sans-serif;
     padding: 30px 0 20px;
     color: #000000;
+}
+
+.box_stats .opt_box.bs_float{
+    width: calc(100% / 7);
+    margin-right: 0;
 }
 
 .box_stats .bs_float {
@@ -115,7 +117,7 @@ body, html {
     color: #FF6633;
     font-weight: 500;
     padding: 0 50px;
-    width: 200px;
+    min-width: 200px;
 }
 
 .app-settings .app-settings__main .form-line {
@@ -132,6 +134,10 @@ body, html {
 
 .opt_box {
     padding: 10px 0 15px;
+}
+
+.opt_box.foot_btn {
+    padding-top: 35px;
 }
 
 .opt_box .opt_label {

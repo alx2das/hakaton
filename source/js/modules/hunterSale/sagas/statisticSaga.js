@@ -42,6 +42,7 @@ function* getStatisticsSaga({uid}) {
 
 export default function* () {
     yield all([
+        // fork(actEnums.GET_RETAIL_POINTS.REQUEST),
         takeEvery(actEnums.GET_RETAIL_POINTS.REQUEST, getRetalPointSaga),
         takeEvery(actEnums.GET_STATISTICS.REQUEST, getStatisticsSaga)
     ])

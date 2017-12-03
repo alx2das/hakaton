@@ -4,5 +4,6 @@ export default (api) => {
 
     api.api().addResource('stories', 'GetStories');
     api.api().addResource('statistics', 'GetStatistics');
+    api.api().addResource('challenges', 'GetChallanges');
 
 };

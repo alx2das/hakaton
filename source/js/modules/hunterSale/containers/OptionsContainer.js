@@ -3,86 +3,65 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
-import {Select, AmountFormat} from 'common/uiElements'
-import Slider from 'react-rangeslider'
+import queryString from 'query-string'
+
+import OptionsFormComponent from '../components/OptionsFormComponent'
+import * as actions from '../actions/optionsActions'
+import * as selector from '../selectors/optionsSelector'
+import {getCurrentLocation} from '../../core/selectors'
 
 
+function mapStateToProps(state) {
+    const optionsState = selector.getOptionsSelector(state);
+    const locationMap = getCurrentLocation(state);
 
-function mapStateToProps(state, ownProps) {
-    return {}
+    const location = locationMap.toJS();
+    const searchParams = queryString.parse(location.search);
+
+    return {searchParams, optionsState}
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({}, dispatch);
+    return bindActionCreators({
+        actGetOptions: actions.getOptions.request
+    }, dispatch);
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 @toJS
 export default class extends Component {
-    constructor (props, context) {
-        super(props, context);
-        this.state = {
-            value: 20000
-        }
+
+    componentDidMount() {
+        const {searchParams, actGetOptions} = this.props;
+        actGetOptions(searchParams)
     }
 
-    handleChangeStart = () => {
-        console.log('Change event started')
-    };
-
-    handleChange = value => {
-        this.setState({
-            value: value
-        })
-    };
-
-    handleChangeComplete = () => {
-        console.log('Change event completed')
-    };
+    onSubmitForm(props) {
+        console.log('onSubmitForm', props && props.toJS && props.toJS());
+    }
 
     render() {
-        const { value } = this.state;
+        const {optionsState} = this.props;
 
         return (
             <div>
-
                 <div className="title_panel">
                     <Link to={'/'} className="button small light orange f_right">К статистике</Link>
                 </div>
-
                 <div className="tabs_flat tabs_flat__h1">
                     <a className="tab tab__active">Охота за продажами</a>
                     <a className="tab">Темная карма</a>
                 </div>
 
-                <h3 className='opt_title'>План на неделю</h3>
-
-                <div className='opt_box'>
-                    <div className='opt_label'>Точка продаж</div>
-                    <Select
-                        className='w30'
-                        options={[
-                            {label: 'Первый нах'},
-                            {label: 'Второй епт.'},
-                            {label: 'Последний бля'}
-                        ]}
-                    />
-                </div>
-
-                <div className='opt_box'>
-                    <div className='opt_label'>Желаемые продажи</div>
-                    <Slider
-                        min={0}
-                        max={100000}
-                        value={value}
-                        onChangeStart={this.handleChangeStart}
-                        onChange={this.handleChange}
-                        onChangeComplete={this.handleChangeComplete}
-                    />
-                    <div className='opt_slider_value'><AmountFormat value={value} /></div>
-                </div>
-
+                {!optionsState.loading &&
+                <OptionsFormComponent
+                    initialValues={optionsState.options}
+                    options={optionsState.options}
+                    onSubmitForm={::this.onSubmitForm}
+                    loading={optionsState.saving}
+                />}
             </div>
+
         )
 
     }
