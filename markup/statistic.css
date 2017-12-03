@@ -6,6 +6,10 @@ body, html {
     border: none !important;
 }
 
+.title_panel {
+    padding-bottom: 0;
+}
+
 .tabs_flat {
     padding-top: 10px;
     font-family: 'Ubuntu', sans-serif;
@@ -116,7 +120,7 @@ body, html {
 
 .opt_title {
     font-family: Ubuntu, sans-serif;
-    padding: 40px 0;
+    padding: 40px 0 0;
     font-weight: bold;
     line-height: 24px;
     font-size: 18px;
@@ -132,6 +136,13 @@ body, html {
     line-height: 23px;
     font-size: 14px;
     padding-bottom: 4px;
+}
+
+.opt_box .opt_slider_value {
+    line-height: 26px;
+    font-size: 18px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.499972);
 }
 
 .rangeslider, .rangeslider .rangeslider__fill, .rangeslider .rangeslider__handle {
@@ -159,4 +170,9 @@ body, html {
 
 .rangeslider {
     background: #CBCFD1;
+}
+
+.rangeslider .rangeslider__handle-tooltip {
+    width: auto;
+    padding: 0 10px;
 }

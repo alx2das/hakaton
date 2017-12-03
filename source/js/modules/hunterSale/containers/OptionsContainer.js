@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
-import {Select} from 'common/uiElements'
+import {Select, AmountFormat} from 'common/uiElements'
 import Slider from 'react-rangeslider'
 
 
@@ -20,9 +20,9 @@ function mapDispatchToProps(dispatch) {
 @toJS
 export default class extends Component {
     constructor (props, context) {
-        super(props, context)
+        super(props, context);
         this.state = {
-            value: 10
+            value: 20000
         }
     }
 
@@ -73,12 +73,13 @@ export default class extends Component {
                     <div className='opt_label'>Желаемые продажи</div>
                     <Slider
                         min={0}
-                        max={100}
+                        max={100000}
                         value={value}
                         onChangeStart={this.handleChangeStart}
                         onChange={this.handleChange}
                         onChangeComplete={this.handleChangeComplete}
                     />
+                    <div className='opt_slider_value'><AmountFormat value={value} /></div>
                 </div>
 
             </div>

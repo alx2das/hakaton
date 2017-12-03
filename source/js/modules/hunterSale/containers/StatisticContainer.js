@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
+import {AmountFormat} from 'common/uiElements'
 
 import * as actions from '../actions/statisticActions'
 import * as selector from '../selectors/statisticSelector'
@@ -53,13 +54,13 @@ export default class extends Component {
                     <div className='bs_float'>
                         <div className='bs_title'>Продажи (Текущие/План)</div>
                         <div className='bs_info'>
-                            12 000 руб. <span>/ 45 000 руб.</span>
+                            <AmountFormat value='12000' /> <span>/ <AmountFormat value='45000' /></span>
                         </div>
                     </div>
                     <div className='bs_float'>
                         <div className='bs_title'>Средний чек (текущий / план)</div>
                         <div className='bs_info'>
-                            450 руб. <span>/ 600 руб.</span>
+                            <AmountFormat value='450' /> <span>/ <AmountFormat value='600' /></span>
                         </div>
                     </div>
                     <div className='bs_float'>
@@ -81,36 +82,36 @@ export default class extends Component {
 
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name">65 000,00</div>
-                        <div className="contragent_role">1000</div>
+                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name">65 000,00</div>
-                        <div className="contragent_role">1000</div>
+                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name">65 000,00</div>
-                        <div className="contragent_role">1000</div>
+                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name">65 000,00</div>
-                        <div className="contragent_role">1000</div>
+                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name">65 000,00</div>
-                        <div className="contragent_role">1000</div>
+                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
