@@ -61,12 +61,6 @@ export default class extends Component {
                             4 <span>/ 7</span>
                         </div>
                     </div>
-                    <div className='bs_float'>
-                        <div className='bs_title'>Продажи товаров недели</div>
-                        <div className='bs_info'>
-                            127
-                        </div>
-                    </div>
                 </div>
 
                 <div className="table table_contragents">
@@ -75,8 +69,6 @@ export default class extends Component {
                         <div className="contragent_name">Выручка</div>
                         <div className="contragent_role">Средний чек</div>
                         <div className="contragent_status">Кол-во продаж</div>
-                        <div className="contragent_status">=))</div>
-                        <div className="contragent_status">=((</div>
                         <div className="contragent_status">Карма</div>
                     </div>
 
@@ -85,8 +77,6 @@ export default class extends Component {
                         <div className="contragent_name">65 000,00</div>
                         <div className="contragent_role">1000</div>
                         <div className="contragent_status">150</div>
-                        <div className="contragent_status">1500</div>
-                        <div className="contragent_status">1200</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
@@ -94,8 +84,6 @@ export default class extends Component {
                         <div className="contragent_name">65 000,00</div>
                         <div className="contragent_role">1000</div>
                         <div className="contragent_status">150</div>
-                        <div className="contragent_status">1500</div>
-                        <div className="contragent_status">1200</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
@@ -103,8 +91,6 @@ export default class extends Component {
                         <div className="contragent_name">65 000,00</div>
                         <div className="contragent_role">1000</div>
                         <div className="contragent_status">150</div>
-                        <div className="contragent_status">1500</div>
-                        <div className="contragent_status">1200</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
@@ -112,8 +98,6 @@ export default class extends Component {
                         <div className="contragent_name">65 000,00</div>
                         <div className="contragent_role">1000</div>
                         <div className="contragent_status">150</div>
-                        <div className="contragent_status">1500</div>
-                        <div className="contragent_status">1200</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
@@ -121,8 +105,6 @@ export default class extends Component {
                         <div className="contragent_name">65 000,00</div>
                         <div className="contragent_role">1000</div>
                         <div className="contragent_status">150</div>
-                        <div className="contragent_status">1500</div>
-                        <div className="contragent_status">1200</div>
                         <div className="contragent_status">300</div>
                     </div>
                 </div>

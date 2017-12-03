@@ -3,6 +3,7 @@ body, html {
 }
 
 .tabs_flat {
+    padding-top: 10px;
     font-family: Ubuntu, sans-serif;
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 }
@@ -20,16 +21,20 @@ body, html {
     font-size: 14px;
     line-height: 1;
     text-transform: uppercase;
-    padding-bottom: 15px;
+    padding: 15px 0;
     font-style: normal;
     color: #546e7a;
+}
+
+.tabs_flat .tab:hover {
+    border-bottom: none !important;
 }
 
 .tabs_flat .tab.tab__active {
     color: #FF7800;
     padding-bottom: 16px;
     margin-bottom: -1px;
-    border-bottom: 3px solid #FF7800;
+    border-bottom: 3px solid #FF7800 !important;
 }
 
 .box_stats {
@@ -38,16 +43,16 @@ body, html {
     color: #000000;
 }
 
+.box_stats .bs_float {
+    float: left;
+    margin-right: 40px;
+    padding: 10px 0;
+}
+
 .box_stats .bs_title {
     font-size: 14px;
     font-style: normal;
     line-height: 29px;
-}
-
-.box_stats .bs_float {
-    float: left;
-    margin-right: 22px;
-    padding: 10px 0;
 }
 
 .box_stats .bs_info {
