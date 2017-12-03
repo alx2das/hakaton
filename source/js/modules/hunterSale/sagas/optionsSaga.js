@@ -24,11 +24,11 @@ function* saveOptionsSaga({type, ...props}) {
         // const statisticSatate = yield select(getStatisticSelector);
         // const actRPointID = statisticSatate.get('actRPointID');
         const response = yield call(dataContext.saveOptions, props);
-
-        console.log('response', response);
+        yield put(actEnums.saveOptions.success());
 
     } catch (err) {
         console.log(err);
+        yield put(actEnums.saveOptions.failure());
     }
 }
 
