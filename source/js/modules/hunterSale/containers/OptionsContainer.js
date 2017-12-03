@@ -4,6 +4,9 @@ import {bindActionCreators} from 'redux'
 import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
 import {Select} from 'common/uiElements'
+import Slider from 'react-rangeslider'
+
+import 'react-rangeslider/lib/index.css'
 
 
 function mapStateToProps(state, ownProps) {
@@ -17,13 +20,35 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 @toJS
 export default class extends Component {
+    constructor (props, context) {
+        super(props, context)
+        this.state = {
+            value: 10
+        }
+    }
+
+    handleChangeStart = () => {
+        console.log('Change event started')
+    };
+
+    handleChange = value => {
+        this.setState({
+            value: value
+        })
+    };
+
+    handleChangeComplete = () => {
+        console.log('Change event completed')
+    };
+
     render() {
-        console.log('fullState', this.props);
+        const { value } = this.state;
+
         return (
             <div>
 
                 <div className="title_panel">
-                    <Link to={'/options'} className="button small light orange f_right">К статистике</Link>
+                    <Link to={'/'} className="button small light orange f_right">К статистике</Link>
                 </div>
 
                 <div className="tabs_flat tabs_flat__h1">
@@ -42,6 +67,18 @@ export default class extends Component {
                             {label: 'Второй епт.'},
                             {label: 'Последний бля'}
                         ]}
+                    />
+                </div>
+
+                <div className='opt_box'>
+                    <div className='opt_label'>Желаемые продажи</div>
+                    <Slider
+                        min={0}
+                        max={100}
+                        value={value}
+                        onChangeStart={this.handleChangeStart}
+                        onChange={this.handleChange}
+                        onChangeComplete={this.handleChangeComplete}
                     />
                 </div>
 
