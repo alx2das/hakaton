@@ -4,8 +4,7 @@ import {bindActionCreators} from 'redux'
 import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
 import {AmountFormat} from 'common/uiElements'
-
-import {LineChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+import {Line} from 'react-chartjs-2'
 
 import * as actions from '../actions/statisticActions'
 import * as selector from '../selectors/statisticSelector'
@@ -32,16 +31,55 @@ export default class extends Component {
 
     render() {
         const {statisticState} = this.props;
-        const data = [
-            {name: '1', uv: 590, pv: 800, amt: 3223},
-            {name: '2', uv: 868, pv: 967, amt: 1223},
-            {name: '3', uv: 1397, pv: 1098, amt: 123},
-            {name: '4', uv: 1480, pv: 1200, amt: 1228},
-            {name: '5', uv: 1520, pv: 1108, amt: 2334},
-            {name: '6', uv: 1480, pv: 1200, amt: 1228},
-            {name: '7', uv: 1520, pv: 1108, amt: 543},
-            {name: '8', uv: 1400, pv: 680, amt: 1223}
-        ];
+
+        const data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3, 6],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            },{
+                label: '# of Votes',
+                data: [2, 3, 6, 8, 1, 2, 10],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
 
         console.log('-->', statisticState);
 
@@ -84,16 +122,7 @@ export default class extends Component {
                 </div>
 
                 <div className='box_chart'>
-                    <LineChart width={800} height={300} data={data}
-                               margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                        <XAxis dataKey="name"/>
-                        <YAxis/>
-                        <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip/>
-                        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="atm" stroke="#82ca9d" />
-                    </LineChart>
+                    <Line data={data}/>
                 </div>
 
                 <div className="table table_contragents">
