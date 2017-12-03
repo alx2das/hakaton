@@ -51,7 +51,6 @@ export default class extends Component {
                 </div>
                 <div className="tabs_flat tabs_flat__h1">
                     <a className="tab tab__active">Охота за продажами</a>
-                    <a className="tab">Темная карма</a>
                 </div>
 
                 {!optionsState.loading &&
