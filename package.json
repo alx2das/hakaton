@@ -102,6 +102,7 @@
     "react-select": "^1.0.0-rc.5",
     "react-tooltip": "git://github.com/benderr/react-tooltip.git#v3.3.5",
     "react-waypoint": "^7.0.3",
+    "recharts": "^1.0.0-beta.6",
     "redux": "^3.3.1",
     "redux-form": "^6.8.0",
     "redux-immutablejs": "0.0.8",

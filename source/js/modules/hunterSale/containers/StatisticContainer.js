@@ -5,6 +5,8 @@ import toJS from 'components/HOC/toJs'
 import {Link} from 'react-router-dom'
 import {AmountFormat} from 'common/uiElements'
 
+import {LineChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
+
 import * as actions from '../actions/statisticActions'
 import * as selector from '../selectors/statisticSelector'
 
@@ -30,6 +32,16 @@ export default class extends Component {
 
     render() {
         const {statisticState} = this.props;
+        const data = [
+            {name: '1', uv: 590, pv: 800, amt: 3223},
+            {name: '2', uv: 868, pv: 967, amt: 1223},
+            {name: '3', uv: 1397, pv: 1098, amt: 123},
+            {name: '4', uv: 1480, pv: 1200, amt: 1228},
+            {name: '5', uv: 1520, pv: 1108, amt: 2334},
+            {name: '6', uv: 1480, pv: 1200, amt: 1228},
+            {name: '7', uv: 1520, pv: 1108, amt: 543},
+            {name: '8', uv: 1400, pv: 680, amt: 1223}
+        ];
 
         console.log('-->', statisticState);
 
@@ -54,13 +66,13 @@ export default class extends Component {
                     <div className='bs_float'>
                         <div className='bs_title'>Продажи (Текущие/План)</div>
                         <div className='bs_info'>
-                            <AmountFormat value='12000' /> <span>/ <AmountFormat value='45000' /></span>
+                            <AmountFormat value='12000'/> <span>/ <AmountFormat value='45000'/></span>
                         </div>
                     </div>
                     <div className='bs_float'>
                         <div className='bs_title'>Средний чек (текущий / план)</div>
                         <div className='bs_info'>
-                            <AmountFormat value='450' /> <span>/ <AmountFormat value='600' /></span>
+                            <AmountFormat value='450'/> <span>/ <AmountFormat value='600'/></span>
                         </div>
                     </div>
                     <div className='bs_float'>
@@ -69,6 +81,19 @@ export default class extends Component {
                             4 <span>/ 7</span>
                         </div>
                     </div>
+                </div>
+
+                <div className='box_chart'>
+                    <LineChart width={800} height={300} data={data}
+                               margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                        <XAxis dataKey="name"/>
+                        <YAxis/>
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <Tooltip/>
+                        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                        <Line type="monotone" dataKey="atm" stroke="#82ca9d" />
+                    </LineChart>
                 </div>
 
                 <div className="table table_contragents">
@@ -82,36 +107,36 @@ export default class extends Component {
 
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
+                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
+                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
+                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
+                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
                     <div className="table_row row_link">
                         <div className="contragent_name">Матросов Матрос</div>
-                        <div className="contragent_name"><AmountFormat value='65000,00' /></div>
-                        <div className="contragent_role"><AmountFormat value='1000,00' /></div>
+                        <div className="contragent_name"><AmountFormat value='65000,00'/></div>
+                        <div className="contragent_role"><AmountFormat value='1000,00'/></div>
                         <div className="contragent_status">150</div>
                         <div className="contragent_status">300</div>
                     </div>
