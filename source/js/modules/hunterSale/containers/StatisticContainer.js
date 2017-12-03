@@ -50,13 +50,13 @@ export default class extends Component {
                         </div>
                     </div>
                     <div className='bs_float'>
-                        <div className='bs_title'>Товаров в чеке (текущих / план)</div>
+                        <div className='bs_title'>Средний чек (текущий / план)</div>
                         <div className='bs_info'>
                             450 руб. <span>/ 600 руб.</span>
                         </div>
                     </div>
                     <div className='bs_float'>
-                        <div className='bs_title'>Средний чек (текущий / план)</div>
+                        <div className='bs_title'>Товаров в чеке (текущих / план)</div>
                         <div className='bs_info'>
                             4 <span>/ 7</span>
                         </div>
@@ -69,6 +69,63 @@ export default class extends Component {
                     </div>
                 </div>
 
+                <div className="table table_contragents">
+                    <div className="table_head">
+                        <div className="contragent_name">ФИО Касира</div>
+                        <div className="contragent_name">Выручка</div>
+                        <div className="contragent_role">Средний чек</div>
+                        <div className="contragent_status">Кол-во продаж</div>
+                        <div className="contragent_status">=))</div>
+                        <div className="contragent_status">=((</div>
+                        <div className="contragent_status">Карма</div>
+                    </div>
+
+                    <div className="table_row row_link">
+                        <div className="contragent_name">Матросов Матрос</div>
+                        <div className="contragent_name">65 000,00</div>
+                        <div className="contragent_role">1000</div>
+                        <div className="contragent_status">150</div>
+                        <div className="contragent_status">1500</div>
+                        <div className="contragent_status">1200</div>
+                        <div className="contragent_status">300</div>
+                    </div>
+                    <div className="table_row row_link">
+                        <div className="contragent_name">Матросов Матрос</div>
+                        <div className="contragent_name">65 000,00</div>
+                        <div className="contragent_role">1000</div>
+                        <div className="contragent_status">150</div>
+                        <div className="contragent_status">1500</div>
+                        <div className="contragent_status">1200</div>
+                        <div className="contragent_status">300</div>
+                    </div>
+                    <div className="table_row row_link">
+                        <div className="contragent_name">Матросов Матрос</div>
+                        <div className="contragent_name">65 000,00</div>
+                        <div className="contragent_role">1000</div>
+                        <div className="contragent_status">150</div>
+                        <div className="contragent_status">1500</div>
+                        <div className="contragent_status">1200</div>
+                        <div className="contragent_status">300</div>
+                    </div>
+                    <div className="table_row row_link">
+                        <div className="contragent_name">Матросов Матрос</div>
+                        <div className="contragent_name">65 000,00</div>
+                        <div className="contragent_role">1000</div>
+                        <div className="contragent_status">150</div>
+                        <div className="contragent_status">1500</div>
+                        <div className="contragent_status">1200</div>
+                        <div className="contragent_status">300</div>
+                    </div>
+                    <div className="table_row row_link">
+                        <div className="contragent_name">Матросов Матрос</div>
+                        <div className="contragent_name">65 000,00</div>
+                        <div className="contragent_role">1000</div>
+                        <div className="contragent_status">150</div>
+                        <div className="contragent_status">1500</div>
+                        <div className="contragent_status">1200</div>
+                        <div className="contragent_status">300</div>
+                    </div>
+                </div>
             </div>
         )
 
