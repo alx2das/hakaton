@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import {Select} from 'common/uiElements'
 import Slider from 'react-rangeslider'
 
-import 'react-rangeslider/lib/index.css'
 
 
 function mapStateToProps(state, ownProps) {

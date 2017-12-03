@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import 'react-rangeslider/lib/index.css'
 import '../../../Markup.Kassa/markup/stylus/style_kassa.styl'
 import '../../markup/statistic.css'
 

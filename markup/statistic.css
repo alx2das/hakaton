@@ -125,6 +125,33 @@ body, html {
     font-style: normal;
     font-weight: normal;
     line-height: 23px;
-    font-size: 16px;
-    padding-bottom: 5px;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.rangeslider, .rangeslider .rangeslider__fill, .rangeslider .rangeslider__handle {
+    box-shadow: none !important;
+}
+
+.rangeslider-horizontal {
+    height: 2px;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+    background-color: #FD7822;
+}
+
+.rangeslider-horizontal .rangeslider__handle:after {
+    display: none;
+}
+
+.rangeslider-horizontal .rangeslider__handle {
+    width: 24px;
+    height: 24px;
+    border-radius: 30px;
+    border: 2px solid #fd7823;
+}
+
+.rangeslider {
+    background: #CBCFD1;
 }
