@@ -4,7 +4,7 @@ body, html {
 
 .tabs_flat {
     padding-top: 10px;
-    font-family: Ubuntu, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 }
 
@@ -107,4 +107,24 @@ body, html {
 
 .app-settings .app-settings__main .form-line {
     border-top: none !important;
+}
+
+.opt_title {
+    font-family: Ubuntu, sans-serif;
+    padding: 40px 0;
+    font-weight: bold;
+    line-height: 24px;
+    font-size: 18px;
+}
+
+.opt_box {
+    padding: 10px 0 15px;
+}
+
+.opt_box .opt_label {
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    font-size: 16px;
+    padding-bottom: 5px;
 }
